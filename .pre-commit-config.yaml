@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+    - id: flake8
+  - repo: https://github.com/psf/black
+    rev: 24.2.0
+    hooks:
+    - id: black
+      args: [--line-length=79]
+  - repo: local
+    # rev: v4.5.0
+    hooks:
+    - id: django-test
+      name: Run Django Tests
+      entry: python manage.py test
+      language: system
+      pass_filenames: false
+      types: [python]
+  - repo: local
+    # rev: v4.5.0
+    hooks:
+    - id: django-makemigrations
+      name: Django Make Migrations
+      entry: python manage.py makemigrations --check --dry-run
+      language: system
+      pass_filenames: false
+      types: [python]
