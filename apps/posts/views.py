@@ -89,7 +89,11 @@ class FeedViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
                             "friend", flat=True
                         )
                     ),
-                ) | Q(audience="close_friends", user__friends__is_close_friend=True)
+                )
+                | Q(
+                    audience="close_friends",
+                    user__friends__is_close_friend=True,
+                )
             )
             .select_related("user", "user__profile")
             .order_by("-updated")
@@ -140,11 +144,10 @@ class PostLikeAPIView(views.APIView):
 
             action = form.cleaned_data.get("action")
             post_like, _ = PostLike.objects.get_or_create(
-                liked_by=request.user,
-                post=post
+                liked_by=request.user, post=post
             )
 
-            if action == 'like':
+            if action == "like":
                 post_like.is_liked = True
             else:
                 post_like.is_liked = False
@@ -171,4 +174,6 @@ class PostCommentViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )

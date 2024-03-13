@@ -34,7 +34,10 @@ def create_access_token(request):
 
     expires = timezone.now() + timedelta(hours=24)
     access_token = AccessToken.objects.create(
-        user=user, application=application, expires=expires, token=uuid.uuid4().hex
+        user=user,
+        application=application,
+        expires=expires,
+        token=uuid.uuid4().hex,
     )
 
     return Response({"access_token": access_token.token})

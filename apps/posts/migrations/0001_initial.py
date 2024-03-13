@@ -29,10 +29,22 @@ class Migration(migrations.Migration):
                 ("created", models.DateTimeField(auto_now_add=True)),
                 ("updated", models.DateTimeField(auto_now=True)),
                 ("file", models.FileField(upload_to="posts/")),
-                ("caption", models.CharField(blank=True, max_length=300, null=True)),
-                ("location", models.CharField(blank=True, max_length=100, null=True)),
-                ("music", models.CharField(blank=True, max_length=50, null=True)),
-                ("hide_like_and_view_counts", models.BooleanField(default=False)),
+                (
+                    "caption",
+                    models.CharField(blank=True, max_length=300, null=True),
+                ),
+                (
+                    "location",
+                    models.CharField(blank=True, max_length=100, null=True),
+                ),
+                (
+                    "music",
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    "hide_like_and_view_counts",
+                    models.BooleanField(default=False),
+                ),
                 ("turn_off_comments", models.BooleanField(default=False)),
                 (
                     "audience",

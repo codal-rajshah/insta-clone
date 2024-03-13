@@ -36,7 +36,9 @@ class UserCreationView(APIView):
             serializer = UserSerializer(instance=user)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(user_form.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                user_form.errors, status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -61,7 +63,9 @@ class UserViewSet(viewsets.ModelViewSet):
             permission_classes = [permissions.IsAuthenticated]
         return [permission() for permission in permission_classes]
 
-    @action(detail=True, methods=["POST"], serializer_class=UserProfileSerializer)
+    @action(
+        detail=True, methods=["POST"], serializer_class=UserProfileSerializer
+    )
     def profile(self, request, pk=None):
         """
         To create the user profile with required fields
@@ -87,7 +91,9 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response({"success": True}, status=status.HTTP_200_OK)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )
 
     @action(
         detail=True,
@@ -110,7 +116,10 @@ class UserViewSet(viewsets.ModelViewSet):
 
         if profile is None:
             return Response(
-                {"success": False, "detail": "Profile is not created for this user"}
+                {
+                    "success": False,
+                    "detail": "Profile is not created for this user",
+                }
             )
 
         if profile.profile_image is not None:

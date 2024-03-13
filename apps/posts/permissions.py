@@ -16,9 +16,7 @@ class MustBeFriendPermission(BasePermission):
 
         if post.audience == "close_friends":
             return Friend.objects.filter(
-                user=post_owner,
-                friend=requested_user,
-                is_close_friend=True
+                user=post_owner, friend=requested_user, is_close_friend=True
             ).exists()
         else:
             filters = Q(user=requested_user) & Q(friend=post_owner)

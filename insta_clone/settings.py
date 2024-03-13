@@ -21,7 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-6hfg4fq-m8!i7lq+zeu11(emv3ddv1%&@tk=i0k%g-fi0kthn&"
+SECRET_KEY = (
+    "django-insecure-6hfg4fq-m8!i7lq+zeu11(emv3ddv1%&@tk=i0k%g-fi0kthn&"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -126,20 +128,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CUSTOM SETTINGS
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 
-CREATED_APPS = [
-    "apps.common",
-    "apps.posts",
-    "apps.users",
-    "apps.friends"
-]
+CREATED_APPS = ["apps.common", "apps.posts", "apps.users", "apps.friends"]
 
 INTERNAL_APPS = [
     "rest_framework",
     "drf_yasg",
     "oauth2_provider",
-    "django_extensions"
+    "django_extensions",
 ]
 
 INSTALLED_APPS += CREATED_APPS + INTERNAL_APPS

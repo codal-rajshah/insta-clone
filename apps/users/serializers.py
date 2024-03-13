@@ -25,7 +25,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
         regular_exp = "[6-9][0-9]{9}"
         pattern = re.compile(regular_exp)
         if re.match(pattern, mobile_number) is None:
-            raise serializers.ValidationError("Please enter 10 digit mobile number!")
+            raise serializers.ValidationError(
+                "Please enter 10 digit mobile number!"
+            )
         return mobile_number
 
 

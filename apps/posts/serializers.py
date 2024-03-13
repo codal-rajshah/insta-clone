@@ -150,6 +150,7 @@ class PostLikeCreateSerializer(serializers.ModelSerializer):
     """
     Serializer to create post like object
     """
+
     class Meta:
         model = PostLike
         fields = ["post", "liked_by", "is_liked"]

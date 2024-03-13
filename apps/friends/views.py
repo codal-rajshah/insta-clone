@@ -13,7 +13,10 @@ from apps.friends.serializers import (
     FriendSerializer,
 )
 from apps.friends.models import Friend, FriendRequest
-from apps.friends.permissions import FriendRequestOwnerPermission, FriendOwnerPermission
+from apps.friends.permissions import (
+    FriendRequestOwnerPermission,
+    FriendOwnerPermission,
+)
 
 User = get_user_model()
 
@@ -73,7 +76,9 @@ class FriendRequestViewSet(viewsets.ModelViewSet):
         if Friend.objects.filter(
             user=friend_request.from_user, friend=friend_request.to_user
         ).exists():
-            return Response({"success": False}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"success": False}, status=status.HTTP_400_BAD_REQUEST
+            )
 
         friend_request.delete()
         return Response({"success": True})

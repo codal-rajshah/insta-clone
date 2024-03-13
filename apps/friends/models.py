@@ -27,7 +27,9 @@ class Friend(TimeStampedModel):
     Friends table to store the users after acceptance
     """
 
-    user = models.ForeignKey(User, related_name="friends", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, related_name="friends", on_delete=models.CASCADE
+    )
     friend = models.ForeignKey(User, on_delete=models.CASCADE)
     is_close_friend = models.BooleanField(default=False)
 

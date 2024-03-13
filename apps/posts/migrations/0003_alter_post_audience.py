@@ -14,7 +14,10 @@ class Migration(migrations.Migration):
             model_name="post",
             name="audience",
             field=models.CharField(
-                choices=[("friends", "Friends"), ("close_friends", "Close Friends")],
+                choices=[
+                    ("friends", "Friends"),
+                    ("close_friends", "Close Friends"),
+                ],
                 default="friends",
                 max_length=20,
             ),

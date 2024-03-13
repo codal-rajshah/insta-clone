@@ -11,8 +11,13 @@ class Post(TimeStampedModel):
     Model to save the post in database
     """
 
-    AUDIENCE_CHOICES = (("friends", "Friends"), ("close_friends", "Close Friends"))
-    user = models.ForeignKey(User, related_name="posts", on_delete=models.CASCADE)
+    AUDIENCE_CHOICES = (
+        ("friends", "Friends"),
+        ("close_friends", "Close Friends"),
+    )
+    user = models.ForeignKey(
+        User, related_name="posts", on_delete=models.CASCADE
+    )
 
     # post related fields
     file = models.FileField(upload_to="posts/")
@@ -40,7 +45,9 @@ class PostLike(TimeStampedModel):
     Model to save post likes
     """
 
-    post = models.ForeignKey(Post, related_name="likes", on_delete=models.CASCADE)
+    post = models.ForeignKey(
+        Post, related_name="likes", on_delete=models.CASCADE
+    )
     liked_by = models.ForeignKey(
         User, related_name="user_likes", on_delete=models.CASCADE
     )
@@ -58,7 +65,9 @@ class PostComment(TimeStampedModel):
     Model to save post comments
     """
 
-    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    post = models.ForeignKey(
+        Post, related_name="comments", on_delete=models.CASCADE
+    )
     commented_by = models.ForeignKey(
         User, related_name="user_comments", on_delete=models.CASCADE
     )

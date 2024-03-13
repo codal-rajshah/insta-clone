@@ -17,7 +17,9 @@ class UserProfile(TimeStampedModel):
         ("professional", "Professional"),
     ]
 
-    user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User, related_name="profile", on_delete=models.CASCADE
+    )
     name = models.CharField(max_length=100, db_index=True)
     mobile_number = models.CharField(max_length=10, db_index=True)
     profile_image = models.FileField(upload_to="profile_images/")
@@ -34,6 +36,8 @@ class UserLink(TimeStampedModel):
     External links added by users
     """
 
-    user = models.ForeignKey(User, related_name="links", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, related_name="links", on_delete=models.CASCADE
+    )
     link = models.URLField()
     title = models.CharField(max_length=50, db_index=True)

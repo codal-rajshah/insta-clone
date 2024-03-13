@@ -9,7 +9,11 @@ default_router.register(r"", views.UserViewSet)
 
 urlpatterns = [
     path("create", views.UserCreationView.as_view(), name="user-creation"),
-    path("create/<int:pk>/", views.UserCreationView.as_view(), name="user-detail"),
+    path(
+        "create/<int:pk>/",
+        views.UserCreationView.as_view(),
+        name="user-detail",
+    ),
 ]
 
 urlpatterns += default_router.urls

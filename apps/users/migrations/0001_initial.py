@@ -58,8 +58,14 @@ class Migration(migrations.Migration):
                 ("created", models.DateTimeField(auto_now_add=True)),
                 ("updated", models.DateTimeField(auto_now=True)),
                 ("name", models.CharField(db_index=True, max_length=100)),
-                ("mobile_number", models.CharField(db_index=True, max_length=10)),
-                ("profile_image", models.FileField(upload_to="profile_images/")),
+                (
+                    "mobile_number",
+                    models.CharField(db_index=True, max_length=10),
+                ),
+                (
+                    "profile_image",
+                    models.FileField(upload_to="profile_images/"),
+                ),
                 ("bio", models.TextField(blank=True, null=True)),
                 ("date_of_birth", models.DateField()),
                 (
